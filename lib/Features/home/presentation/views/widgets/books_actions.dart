@@ -1,8 +1,6 @@
 import 'package:books_app/Core/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 
-
-
 class BooksActions extends StatelessWidget {
   const BooksActions({super.key});
 
@@ -41,4 +39,3 @@ class BooksActions extends StatelessWidget {
     );
   }
 }
-
