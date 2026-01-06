@@ -13,7 +13,8 @@ class HomeRepoImpl implements HomeRepo {
   Future<Either<Failure, List<BookModel>>> fetchNewestBooks() async {
     try {
       var data = await apiServices.get(
-        '?filter=free-ebooks&q=subject: programming&orderBy=newest',
+        endPoint:
+            'volumes?filter=free-ebooks&q=subject:programming&orderBy=newest',
       );
       List<BookModel> books = [];
       for (var item in data['items']) {
@@ -32,7 +33,7 @@ class HomeRepoImpl implements HomeRepo {
   Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks() async {
     try {
       var data = await apiServices.get(
-        '?filter=free-ebooks&q=subject: programming',
+        endPoint: 'volumes?q=subject:programming&Filtering=free-ebooks',
       );
       List<BookModel> books = [];
       for (var item in data['items']) {
