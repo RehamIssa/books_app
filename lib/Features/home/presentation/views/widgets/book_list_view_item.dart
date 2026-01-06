@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:books_app/constants.dart';
 import 'package:books_app/Core/utils/assets.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class BookListViewItem extends StatelessWidget {
   const BookListViewItem({super.key});
@@ -46,9 +47,7 @@ class BookListViewItem extends StatelessWidget {
                     width: MediaQuery.of(context).size.width * .50,
                     child: Text(
                       'Harry Potter and the Goblet of Fire',
-                      style: Styles.textStyle20.copyWith(
-                        fontFamily: kGTSectraFine,
-                      ),
+                      style: GoogleFonts.domine(textStyle: Styles.textStyle20),
                       maxLines: 2,
                       overflow: TextOverflow
                           .ellipsis, //three dots when the text is too long

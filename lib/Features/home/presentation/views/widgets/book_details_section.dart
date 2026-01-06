@@ -2,6 +2,7 @@ import 'package:books_app/Core/utils/styles.dart';
 import 'package:books_app/Features/home/presentation/views/widgets/book_rating.dart';
 import 'package:books_app/Features/home/presentation/views/widgets/custom_book_image.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class BookDetailsSection extends StatelessWidget {
   const BookDetailsSection({super.key});
@@ -14,10 +15,16 @@ class BookDetailsSection extends StatelessWidget {
         const SizedBox(height: 47),
         Padding(
           padding: EdgeInsetsGeometry.symmetric(horizontal: width * .24),
-          child: const CustomBookImage(imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/d/d1/Image_not_available.png',),
+          child: const CustomBookImage(
+            imageUrl:
+                'https://upload.wikimedia.org/wikipedia/commons/d/d1/Image_not_available.png',
+          ),
         ),
         const SizedBox(height: 42),
-        const Text('The Jungle Book', style: Styles.textStyle30),
+        Text(
+          'The Jungle Book',
+          style: GoogleFonts.domine(textStyle: Styles.textStyle30),
+        ),
         const SizedBox(height: 12),
         Opacity(
           opacity: 0.7,

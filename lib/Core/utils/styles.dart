@@ -1,4 +1,3 @@
-import 'package:books_app/constants.dart';
 import 'package:flutter/widgets.dart';
 
 abstract class Styles {
@@ -26,6 +25,5 @@ abstract class Styles {
   static const textStyle30 = TextStyle(
     fontSize: 30,
     fontWeight: FontWeight.normal,
-    fontFamily: kGTSectraFine,
   );
 }
