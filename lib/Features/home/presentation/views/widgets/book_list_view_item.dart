@@ -1,15 +1,15 @@
 import 'package:books_app/Core/utils/app_router.dart';
 import 'package:books_app/Core/utils/styles.dart';
+import 'package:books_app/Features/home/data/models/book_model/book_model.dart';
 import 'package:books_app/Features/home/presentation/views/widgets/book_rating.dart';
+import 'package:books_app/Features/home/presentation/views/widgets/custom_book_image.dart';
 import 'package:flutter/material.dart';
-import 'package:books_app/constants.dart';
-import 'package:books_app/Core/utils/assets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class BookListViewItem extends StatelessWidget {
-  const BookListViewItem({super.key});
-
+  const BookListViewItem({super.key, required this.bookModel});
+  final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -20,19 +20,22 @@ class BookListViewItem extends StatelessWidget {
         height: 115,
         child: Row(
           children: [
-            AspectRatio(
-              aspectRatio: 2 / 3,
-              child: Container(
-                padding: const EdgeInsets.symmetric(vertical: 47.0),
-                decoration: BoxDecoration(
-                  color: Colors.amber,
-                  borderRadius: BorderRadius.circular(12),
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage(AssetsData.testImage),
-                  ),
-                ),
-              ),
+            // AspectRatio(
+            //   aspectRatio: 2 / 3,
+            //   child: Container(
+            //     padding: const EdgeInsets.symmetric(vertical: 47.0),
+            //     decoration: BoxDecoration(
+            //       color: Colors.amber,
+            //       borderRadius: BorderRadius.circular(12),
+            //       image: DecorationImage(
+            //         fit: BoxFit.cover,
+            //         image: AssetImage(AssetsData.testImage),
+            //       ),
+            //     ),
+            //   ),
+            // ),
+            CustomBookImage(
+              imageUrl: bookModel.volumeInfo.imageLinks.thumbnail,
             ),
             SizedBox(width: 30),
             Expanded(
@@ -46,7 +49,7 @@ class BookListViewItem extends StatelessWidget {
                     */
                     width: MediaQuery.of(context).size.width * .50,
                     child: Text(
-                      'Harry Potter and the Goblet of Fire',
+                      bookModel.volumeInfo.title ?? 'not found',
                       style: GoogleFonts.domine(textStyle: Styles.textStyle20),
                       maxLines: 2,
                       overflow: TextOverflow
@@ -54,15 +57,18 @@ class BookListViewItem extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 3),
-                  const Text('J.K. Rowling', style: Styles.textStyle14),
+                  Text(
+                    bookModel.volumeInfo.authors![0],
+                    style: Styles.textStyle14,
+                  ),
                   const SizedBox(height: 3),
                   Padding(
                     padding: const EdgeInsets.only(right: 16.0),
                     child: Row(
                       children: [
                         Text(
-                          '19.99 €',
-                          style: Styles.textStyle20.copyWith(
+                          'Free',
+                          style: Styles.textStyle18.copyWith(
                             fontWeight: FontWeight.bold,
                           ),
                         ),

@@ -19,9 +19,9 @@ class BookRating extends StatelessWidget {
           size: 13,
         ),
         const SizedBox(width: 6),
-        const Text('4.8', style: Styles.textStyle16),
+        const Text('No rating available', style: Styles.textStyle14),
         const SizedBox(width: 6),
-        Opacity(opacity: 0.5, child: Text('(245)', style: Styles.textStyle14)),
+        Opacity(opacity: 0.5, child: Text('(0)', style: Styles.textStyle14)),
       ],
     );
   }

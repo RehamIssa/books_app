@@ -1,5 +1,5 @@
 import 'package:books_app/Core/utils/styles.dart';
-import 'package:books_app/Features/home/presentation/views/widgets/best_seller_list_view.dart';
+import 'package:books_app/Features/home/presentation/views/widgets/newest_books_list_view.dart';
 import 'package:books_app/Features/home/presentation/views/widgets/books_list_view.dart';
 import 'package:books_app/Features/home/presentation/views/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
@@ -26,13 +26,13 @@ class HomeViewBody extends StatelessWidget {
               const SizedBox(height: 50),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: const Text('Best Seller', style: Styles.textStyle18),
+                child: const Text('Newest Books', style: Styles.textStyle18),
               ),
               const SizedBox(height: 20),
             ],
           ),
         ),
-        SliverFillRemaining(child: BestSellerListView()),
+        SliverFillRemaining(child: NewestBooksListView()),
       ],
     );
   }
