@@ -6,4 +6,5 @@ abstract class HomeRepo {
   //since it is an abstract class we can create abstract methods in it.
   Future<Either<Failure, List<BookModel>>> fetchNewestBooks();
   Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks();
+  Future<Either<Failure, List<BookModel>>> fetchSimilarBooks({required String category});
 }
