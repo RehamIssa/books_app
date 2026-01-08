@@ -1,9 +1,11 @@
+import 'package:books_app/Core/utils/app_router.dart';
 import 'package:books_app/Core/widgets/custom_error_widget.dart';
 import 'package:books_app/Core/widgets/custom_progress_indicator.dart';
 import 'package:books_app/Features/home/presentation/views/widgets/custom_book_image.dart';
 import 'package:books_app/Features/home/presentation/views_model/featured_books_cubit/featured_books_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class BooksListView extends StatelessWidget {
   const BooksListView({super.key});
@@ -16,15 +18,23 @@ class BooksListView extends StatelessWidget {
           return SizedBox(
             height: MediaQuery.of(context).size.height * .25,
             child: ListView.builder(
-              physics: BouncingScrollPhysics(), //scrolling effect for the list 
+              physics: BouncingScrollPhysics(), //scrolling effect for the list
               itemCount: state.books.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: EdgeInsets.only(right: 16.0),
-                  child: CustomBookImage(
-                    imageUrl:
-                        state.books[index].volumeInfo.imageLinks.thumbnail,
+                  child: GestureDetector(
+                    onTap: () {
+                      GoRouter.of(context).push(
+                        AppRouter.kBookDetailsViewPath,
+                        extra: state.books[index],
+                      );
+                    },
+                    child: CustomBookImage(
+                      imageUrl:
+                          state.books[index].volumeInfo.imageLinks.thumbnail,
+                    ),
                   ),
                 );
               },

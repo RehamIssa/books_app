@@ -1,3 +1,4 @@
+import 'package:books_app/Features/home/data/models/book_model/book_model.dart';
 import 'package:books_app/Features/home/presentation/views/widgets/book_details_section.dart';
 import 'package:books_app/Features/home/presentation/views/widgets/books_actions.dart';
 import 'package:books_app/Features/home/presentation/views/widgets/custom_book_details_view_app_bar.dart';
@@ -5,7 +6,8 @@ import 'package:books_app/Features/home/presentation/views/widgets/similar_books
 import 'package:flutter/material.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
-  const BookDetailsViewBody({super.key});
+  const BookDetailsViewBody({super.key, required this.bookModel});
+  final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -19,7 +21,7 @@ class BookDetailsViewBody extends StatelessWidget {
                 child: Column(
                   children: [
                     const CustomBookDetailsViewAppBar(),
-                    const BookDetailsSection(),
+                    BookDetailsSection(book: bookModel),
                     const SizedBox(height: 40),
                     const BooksActions(),
                     Expanded(child: const SizedBox(height: 50)),
