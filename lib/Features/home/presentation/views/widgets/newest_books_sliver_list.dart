@@ -13,12 +13,8 @@ class NewestBooksListView extends StatelessWidget {
     return BlocBuilder<NewestBooksCubit, NewestBooksState>(
       builder: (context, state) {
         if (state is NewestBooksSuccess) {
-          return ListView.builder(
-            padding: EdgeInsets.zero, //remove the default padding of the widget
-            physics:
-                NeverScrollableScrollPhysics(), //Stop the scrolling of the list itself
-            itemCount: state.books.length,
-            itemBuilder: (context, index) {
+          return SliverList(
+            delegate: SliverChildBuilderDelegate((context, index) {
               return Padding(
                 padding: const EdgeInsets.symmetric(
                   vertical: 10,
@@ -26,12 +22,14 @@ class NewestBooksListView extends StatelessWidget {
                 ),
                 child: BookListViewItem(bookModel: state.books[index]),
               );
-            },
+            }, childCount: state.books.length),
           );
         } else if (state is NewestBooksFailure) {
-          return CustomErrorWidget(errorMessage: state.errorMessage);
+          return SliverToBoxAdapter(
+            child: CustomErrorWidget(errorMessage: state.errorMessage),
+          );
         } else {
-          return CustomProgressIndicator();
+          return SliverToBoxAdapter(child: CustomProgressIndicator());
         }
       },
     );

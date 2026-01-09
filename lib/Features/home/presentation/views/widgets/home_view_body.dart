@@ -1,5 +1,5 @@
 import 'package:books_app/Core/utils/styles.dart';
-import 'package:books_app/Features/home/presentation/views/widgets/newest_books_list_view.dart';
+import 'package:books_app/Features/home/presentation/views/widgets/newest_books_sliver_list.dart';
 import 'package:books_app/Features/home/presentation/views/widgets/books_list_view.dart';
 import 'package:books_app/Features/home/presentation/views/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +33,8 @@ class HomeViewBody extends StatelessWidget {
             ],
           ),
         ),
-        SliverFillRemaining(child: NewestBooksListView()),
+        NewestBooksListView(),
+     
       ],
     );
   }

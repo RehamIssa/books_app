@@ -15,7 +15,6 @@ Future<void> customLaunchUrl(context, String? previewUrl) async {
     showSnackbar(context, 'Preview link is null or empty');
     return;
   }
-
   final Uri url = Uri.parse(previewUrl);
   if (await canLaunchUrl(url)) {
     await launchUrl(url);
