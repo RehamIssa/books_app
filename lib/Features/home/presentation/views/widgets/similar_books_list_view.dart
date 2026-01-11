@@ -1,9 +1,11 @@
+import 'package:books_app/Core/utils/app_router.dart';
 import 'package:books_app/Core/widgets/custom_error_widget.dart';
 import 'package:books_app/Core/widgets/custom_progress_indicator.dart';
 import 'package:books_app/Features/home/presentation/views/widgets/custom_book_image.dart';
 import 'package:books_app/Features/home/presentation/views_model/similar_books_cubit/similar_books_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class SimilarBooksListView extends StatelessWidget {
   const SimilarBooksListView({super.key});
@@ -21,9 +23,17 @@ class SimilarBooksListView extends StatelessWidget {
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.only(right: 10.0),
-                  child: CustomBookImage(
-                    imageUrl:
-                        state.books[index].volumeInfo.imageLinks.thumbnail,
+                  child: GestureDetector(
+                    onTap: () {
+                      GoRouter.of(context).push(
+                        AppRouter.kBookDetailsViewPath,
+                        extra: state.books[index],
+                      );
+                    },
+                    child: CustomBookImage(
+                      imageUrl:
+                          state.books[index].volumeInfo.imageLinks.thumbnail,
+                    ),
                   ),
                 );
               },

@@ -17,7 +17,7 @@ class CustomSearchTextField extends StatelessWidget {
       decoration: InputDecoration(
         focusedBorder: buildOutlinedInputBorder(),
         enabledBorder: buildOutlinedInputBorder(),
-        hint: const Text('search by category...'),
+        hint: const Text('search...'),
         suffixIcon: const Opacity(
           opacity: 0.8,
           child: Icon(FontAwesomeIcons.magnifyingGlass, color: Colors.white),
